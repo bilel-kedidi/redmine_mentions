@@ -78,14 +78,14 @@
     css = {
       wrapper: {
         margin: 0,
-        padding: 0,
-        overflow: 'hidden'
+        padding: 0
       },
       overlay: {
         position: 'absolute',
         color: 'transparent',
         'white-space': 'pre-wrap',
         'word-wrap': 'break-word',
+        display: "none",
         overflow: 'hidden'
       },
       textarea: {
@@ -130,7 +130,7 @@
       this.$el = $(html.overlay).css(
         $.extend({}, css.overlay, getStyles($textarea, textareaToOverlay), {
           top: this.textareaTop,
-          right: parseInt($textarea.css('border-right-width')),
+          right: parseInt($textarea.css('border-right-width')) ,
           bottom: parseInt($textarea.css('border-bottom-width')),
           left: parseInt($textarea.css('border-left-width'))
         })

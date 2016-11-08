@@ -1,0 +1,12 @@
+<% mentions_issues =  Mention.where(:user_id => User.current.id).pluck(:issue_id)
+   issues = Issue.visible.where(id: mentions_issues).
+       limit(10).
+       includes(:status, :project, :tracker).
+       order("#{Issue.table_name}.updated_on DESC").
+       all
+%>
+
+<h3>
+  <%= l(:label_mentioned_issues) %> (<%= Issue.visible.where(id: mentions_issues).count %>)
+</h3>
+<%= render :partial => 'issues/list_simple', :locals => { :issues => issues } %>
